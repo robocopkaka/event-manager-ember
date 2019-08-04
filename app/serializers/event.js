@@ -14,9 +14,9 @@ export default DS.RESTSerializer.extend({
   normalizeFindRecordResponse(store, primaryModelClass, payload, id, requestType) {
     delete payload.message;
     payload.event = payload.data.event;
-    delete payload.data
+    delete payload.data;
+    console.log(this._super(...arguments));
 
-    console.log(this._super(...arguments))
     return this._super(...arguments);
   },
   keyForAttribute(key) {

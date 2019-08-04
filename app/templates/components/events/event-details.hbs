@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="event-details">
+    <div id="description">
+      <h2 id="description-header">Description</h2>
+      <div id="description-body">
+        {{this.description}}
+      </div>
+    </div>
+    <div id="address">
+      <div class="box">
+        <span class="icon has-text-info">
+          {{fa-icon "clock"}}
+        </span>
+        {{moment-format this.startTime "dddd, MMM, YYYY hh:mm"}}
+          to
+        {{moment-format this.endTime "dddd, MMM, YYYY hh:mm"}}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{yield}}

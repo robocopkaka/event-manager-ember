@@ -1,2 +1,13 @@
-<h1>Render stuff</h1>
+<div id="show-page">
+  {{#let (component 'events/event-headers') as |EventHeaders|}}
+    <EventHeaders @startTime={{this.model.start_time}} @name={{this.model.name}} />
+  {{/let}}
 
+  {{#let (component 'events/event-details') as |EventDetails|}}
+    <EventDetails
+      @description={{this.model.description}}
+      @startTime={{this.model.start_time}}
+      @endTime={{this.model.end_time}}
+    />
+  {{/let}}
+</div>
