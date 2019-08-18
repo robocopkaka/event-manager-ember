@@ -3,15 +3,15 @@
     <div class="hero-body event-hero">
       <div id="event-details">
         <span class="date-wrapper">
-          {{moment-format this.startTime "dddd, MMM, YYYY"}}
+          {{moment-format this.startTime "dddd, MMM DD, YYYY"}}
         </span>
         <h2 id="event-header">{{this.name}}</h2>
         <div id="event-hosts">
-          Hosts: <span id="host">Placeholder host</span>
+          Host: <span id="host">{{this.owner}}</span>
         </div>
       </div>
       <div class="event-extra-details">
-        <div id="event-attendees">100 people attending</div>
+        <div id="event-attendees">{{this.count}} people attending</div>
         <div id="event-category">Random category</div>
       </div>
     </div>

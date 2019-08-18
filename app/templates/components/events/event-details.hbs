@@ -8,12 +8,25 @@
     </div>
     <div id="address">
       <div class="box">
-        <span class="icon has-text-info">
-          {{fa-icon "clock"}}
-        </span>
-        {{moment-format this.startTime "dddd, MMM, YYYY hh:mm"}}
-          to
-        {{moment-format this.endTime "dddd, MMM, YYYY hh:mm"}}
+        <div id="time-details">
+          <span class="icon">
+            {{fa-icon "clock-o"}}
+          </span>
+          <div id="time-text">
+            {{moment-format this.startTime "dddd, MMM DD, YYYY hh:mm"}}
+            to
+            {{moment-format this.endTime "dddd, MMM DD, YYYY hh:mm"}}
+          </div>
+        </div>
+
+        <div id="location-details">
+          <span class="icon">
+            {{fa-icon "map-marker"}}
+          </span>
+          <div id="location-text">
+            Location placeholder
+          </div>
+        </div>
       </div>
     </div>
   </div>
