@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="event-details">
+    <div id="description">
+      <h2 id="description-header">Description</h2>
+      <div id="description-body">
+        {{this.description}}
+      </div>
+    </div>
+    <div id="address">
+      <div class="box">
+        <div id="time-details">
+          <span class="icon">
+            {{fa-icon "clock-o"}}
+          </span>
+          <div id="time-text">
+            {{moment-format this.startTime "dddd, MMM DD, YYYY hh:mm"}}
+            to
+            {{moment-format this.endTime "dddd, MMM DD, YYYY hh:mm"}}
+          </div>
+        </div>
+
+        <div id="location-details">
+          <span class="icon">
+            {{fa-icon "map-marker"}}
+          </span>
+          <div id="location-text">
+            Location placeholder
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{yield}}

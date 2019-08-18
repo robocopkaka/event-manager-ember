@@ -1,0 +1,19 @@
+<section class="hero" id="regii">
+  <div class="container">
+    <div class="hero-body event-hero">
+      <div id="event-details">
+        <span class="date-wrapper">
+          {{moment-format this.startTime "dddd, MMM DD, YYYY"}}
+        </span>
+        <h2 id="event-header">{{this.name}}</h2>
+        <div id="event-hosts">
+          Host: <span id="host">{{this.owner}}</span>
+        </div>
+      </div>
+      <div class="event-extra-details">
+        <div id="event-attendees">{{this.count}} people attending</div>
+        <div id="event-category">Random category</div>
+      </div>
+    </div>
+  </div>
+</section>

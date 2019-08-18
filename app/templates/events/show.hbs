@@ -1,2 +1,34 @@
-<h1>Render stuff</h1>
+<div id="show-page">
+  {{#let (component 'events/event-headers') as |EventHeaders|}}
+    <EventHeaders
+            @startTime={{this.model.startTime}}
+            @name={{this.model.name}}
+            @count={{this.model.bookings.length}}
+            @owner={{this.model.user.name}}
+    />
+  {{/let}}
 
+  {{#let (component 'events/event-details') as |EventDetails|}}
+    <EventDetails
+      @description={{this.model.description}}
+      @startTime={{this.model.startTime}}
+      @endTime={{this.model.endTime}}
+    />
+  {{/let}}
+
+  <div class="container">
+    <div class="event-attendee">
+        <h2 id="attendees-header">Attendees ({{this.model.bookings.length}})</h2>
+        <div class="columns">
+            {{#each this.model.bookings as |booking|}}
+                {{#let (component 'events/event-attendees') as |EventAttendees| }}
+                    <EventAttendees
+                            @user={{booking.user}}
+                            @count={{this.model.bookings.length}}
+                    />
+                {{/let}}
+            {{/each}}
+        </div>
+    </div>
+  </div>
+</div>

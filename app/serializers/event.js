@@ -1,9 +1,12 @@
 import DS from 'ember-data';
-import { decamelize } from '@ember/string'
+import ApplicationSerializer from './application';
 
 
-export default DS.RESTSerializer.extend({
-  // primaryKey: 'id',
+export default ApplicationSerializer.extend(DS.EmbeddedRecordsMixin, {
+  attrs: {
+    bookings: { embedded: 'always' },
+    user: { embedded: 'always' },
+  },
   normalizeFindAllResponse(store, primaryModelClass, payload, id, requestType) {
     delete payload.message;
     payload.events = payload.data.events;
@@ -14,20 +17,8 @@ export default DS.RESTSerializer.extend({
   normalizeFindRecordResponse(store, primaryModelClass, payload, id, requestType) {
     delete payload.message;
     payload.event = payload.data.event;
-    delete payload.data
+    delete payload.data;
 
-    console.log(this._super(...arguments))
     return this._super(...arguments);
-  },
-  keyForAttribute(key) {
-    decamelize(key);
-  },
-  normalize(modelClass, resourceHash) {
-    const data = {
-      id: resourceHash.id,
-      type: modelClass.modelName,
-      attributes: resourceHash
-    };
-    return { data }
   }
 });
