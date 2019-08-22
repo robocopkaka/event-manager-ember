@@ -1,0 +1,31 @@
+<div class="centered-form">
+    <form {{action 'authenticate' on='submit'}} id='signup-form'>
+        <div class="field">
+            <label for="email">Email</label>
+            <div class="control has-icons-left">
+                {{input class='input' value=email placeholder='Enter your emai'}}
+                <span class="icon is-small is-left">
+                  <i class="fa fa-user"/>
+                </span>
+            </div>
+        </div>
+        <div class="field">
+            <label for="password">Password</label>
+            <div class="control has-icons-left">
+                {{input class='input' type='password' value=password placeholder='Enter your password'}}
+                <span class="icon is-small is-left">
+                <i class="fa fa-lock"/>
+            </span>
+            </div>
+        </div>
+        <div class="field is-grouped is-grouped-centered">
+            <p class="control">
+                <button class="button is-primary">
+                    Submit
+                </button>
+            </p>
+        </div>
+    </form>
+</div>
+
+{{outlet}}
