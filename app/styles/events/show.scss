@@ -47,6 +47,19 @@
         font-weight: 400;
         padding: 20px 0;
       }
+      #description-body {
+        max-height: 300px;
+        min-height: 300px;
+        .truncate-multiline--button {
+          height: 25px;
+          background-color: #4A2545;
+          color: #FFF;
+          border-radius: 5px;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
     }
 
     #address {
@@ -85,6 +98,8 @@
 
   .event-attendee {
     padding: 30px 0;
+    max-width: 90%;
+    margin: auto;
 
     #attendees-header {
       font-weight: bold;

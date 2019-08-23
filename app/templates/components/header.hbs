@@ -1,0 +1,47 @@
+<div id="main-header">
+  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        EventsM
+      </div>
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <a href="/" class="navbar-item">Home</a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Centers</a>
+          <div class="navbar-dropdown">
+            <a href="#" class="navbar-item">Add Center</a>
+            <a href="#" class="navbar-item">View Centers</a>
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Events</a>
+          <div class="navbar-dropdown">
+            <a href="#" class="navbar-item">Add Event</a>
+            {{#link-to "events"}}<span class="navbar-item">View Events</span>{{/link-to}}
+          </div>
+        </div>
+      </div>
+
+      <div class="navbar-end">
+        <div class="buttons">
+          {{#if this.isAuthenticated}}
+            <span class="button is-light" {{action this.invalidate}}>Logout</span>
+            {{!-- <a href="/signup" class="button is-primary">Signup</a> --}}
+          {{else}}
+            {{#link-to "login"}}<span class="button is-light">Login</span>{{/link-to}}
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
+
+{{yield}}

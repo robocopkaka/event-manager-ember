@@ -1,3 +1,5 @@
-<h1>PeopleTracker</h1>
-<li><a href="#" {{action 'invalidateSession'}}>Logout</a></li>
+<Header
+    @isAuthenticated={{ session.isAuthenticated }}
+    @invalidate ={{ action "invalidateSession" }}
+/>
 {{outlet}}
