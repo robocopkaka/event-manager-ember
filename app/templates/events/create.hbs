@@ -1,0 +1,46 @@
+<div class="container" id="events-form">
+  <div id="inside">
+    <form {{ action "createEvent" on = "submit" }}>
+  <div class="field">
+    <label for="name" class="label">Name</label>
+    <div class="control">
+      {{ input value = name placeholder = "Enter event name ..." class = "input"}}
+    </div>
+  </div>
+  <div class="field">
+    <label for="guests" class="label">Guests</label>
+    <div class="control">
+      {{ input value = guests placeholder = "Number of guests" class = "input" type = "number"}}
+    </div>
+  </div>
+  <div class="field">
+    <label for="description" class="label">Description</label>
+    <div class="control">
+      {{ textarea value=description class = "textarea" type = "textarea"}}
+    </div>
+  </div>
+  <div class="field">
+    <label for="" class="label">Date</label>
+    <div class="control" id="event-date">
+      {{ pikaday-input value=date onSelection=(action (mut date)) }}
+    </div>
+  </div>
+  <div class="field" id="event-times">
+    <label for="" class="label">Time</label>
+    <div class="control">
+          <span id="from-time">{{ input type="time" value = startTime }}</span>
+
+      <span id="time-separator">To</span>
+      <span id="to-time">{{ input type="time" value = endTime }}</span>
+    </div>
+  </div>
+  <div class="field">
+    <p class="control">
+      <button class="button is-primary">Submit</button>
+    </p>
+  </div>
+</form>
+  </div>
+</div>
+
+{{outlet}}
