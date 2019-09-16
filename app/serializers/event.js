@@ -1,8 +1,10 @@
 import DS from 'ember-data';
 import ApplicationSerializer from './application';
 
+const { EmbeddedRecordsMixin, errorsHashToArray } = DS;
 
-export default ApplicationSerializer.extend(DS.EmbeddedRecordsMixin, {
+
+export default ApplicationSerializer.extend(EmbeddedRecordsMixin, {
   attrs: {
     bookings: { embedded: 'always' },
     user: { embedded: 'always' },
@@ -23,7 +25,9 @@ export default ApplicationSerializer.extend(DS.EmbeddedRecordsMixin, {
     return this._super(...arguments);
   },
 
-  extractErrors(store, typeClass, payload, id) {
-    console.log(payload)
+  extractErrors(store, typeClass, payload) {
+    payload.errors = errorsHashToArray(payload.errors[0]);
+
+    return this._super(...arguments)
   }
 });

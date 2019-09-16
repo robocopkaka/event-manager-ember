@@ -15,7 +15,6 @@ export default DS.RESTAdapter.extend(DataAdapterMixin, {
   authorize(xhr) {
     let {token} = this.get('session.data.authenticated');
     if (isPresent(token)) {
-      console.log(token)
       xhr.setRequestHeader('Authorization', `Bearer ${token}`);
     }
   }

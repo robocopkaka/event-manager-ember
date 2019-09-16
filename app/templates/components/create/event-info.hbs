@@ -1,0 +1,28 @@
+<div id="event-info">
+  <div id="side-header">
+    Basic info
+  </div>
+  <div id="info-fields">
+    <div class="field">
+      <label for="name" class="label">Name</label>
+      <div class="control">
+        {{ input value = name placeholder = "Enter event name ..." class = "input"}}
+      </div>
+      {{#if model.nameErrors }}<ErrorMessages @errors={{model.nameErrors}} />{{/if}}
+    </div>
+    <div class="field">
+      <label for="guests" class="label">Guests</label>
+      <div class="control">
+        {{ input value = guests placeholder = "Number of guests" class = "input" type = "number"}}
+      </div>
+      {{#if model.guestsErrors }}<ErrorMessages @errors={{model.guestsErrors}} />{{/if}}
+    </div>
+    <div class="field">
+      <label for="description" class="label">Description</label>
+      <div class="control">
+        {{ textarea value=description class = "textarea" type = "textarea"}}
+      </div>
+      {{#if model.descriptionErrors }}<ErrorMessages @errors={{model.descriptionErrors}} />{{/if}}
+    </div>
+  </div>
+</div>

@@ -19,10 +19,15 @@ export default Route.extend({
         name, guests, description, date, startTime, endTime, bookings
       });
 
+
       newRecord.save()
         .then(() => console.log("Yay! Works"))
-        .catch((error) => {
-          // console.log(error);
+        .catch(() => {
+          this.currentModel.set('nameErrors', newRecord.get('errors.name'))
+          this.currentModel.set('guestsErrors', newRecord.get('errors.guests'))
+          this.currentModel.set('descriptionErrors', newRecord.get('errors.description'))
+          this.currentModel.set('startTimeErrors', newRecord.get('errors.startTime'))
+          this.currentModel.set('endTimeErrors', newRecord.get('errors.endTime'))
         })
     }
   }

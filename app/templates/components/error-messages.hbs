@@ -1,0 +1,9 @@
+{{#each errors as |error| }}
+  <div class="help is-danger">
+    <ul>
+      <li>{{capitalize-word error.attribute}} {{ error.message }}</li>
+    </ul>
+  </div>
+{{/each}}
+
+{{yield}}
