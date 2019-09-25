@@ -84,15 +84,15 @@
       }
 
       .box {
-        width: 100px;
-        height: 100px;
+        width: 150px;
+        height: 80px;
         background-color: #FFF;
         transition: all 250ms ease;
         will-change: transition;
         display: inline-block;
         text-align: center;
         position: relative;
-        font-weight: 400;
+        font-weight: 500;
         &:active {
           transform: translateY(10px);
         }
@@ -115,6 +115,13 @@
             color: #FFF;
           }
         }
+      }
+    }
+
+    #address-fields {
+      padding-top: 50px;
+      #geolocation {
+        padding-top: 20px;
       }
     }
   }

@@ -6,7 +6,7 @@
     <div class="field">
       <label for="name" class="label">Name</label>
       <div class="control">
-        {{ input value = name placeholder = "Enter event name ..." class = "input"}}
+        {{ input value=(mut name) placeholder = "Enter event name ..." class = "input"}}
       </div>
       {{#if model.nameErrors }}<ErrorMessages @errors={{model.nameErrors}} />{{/if}}
     </div>

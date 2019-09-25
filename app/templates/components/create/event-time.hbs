@@ -8,7 +8,7 @@
       <div class="field-body">
         <div class="date-field">
           <p class="control has-icons-left" id="date">
-            {{ pikaday-input value=date onSelection=(action (mut date)) placeholder="Start date" }}
+            {{ pikaday-input value=date onSelection=(action (mut startDate)) placeholder="Start date" }}
           </p>
         </div>
         <div class="">
@@ -23,12 +23,12 @@
       <div class="field-body">
         <div class="date-field">
           <p class="control has-icons-left" id="date">
-            {{ pikaday-input value=date onSelection=(action (mut date)) placeholder="End date" }}
+            {{ pikaday-input value=date onSelection=(action (mut endDate)) placeholder="End date" }}
           </p>
         </div>
         <div class="">
           <p class="control is-expanded has-icons-left">
-            <span>{{ input type="time" value = startTime id="to-time" }}</span>
+            <span>{{ input type="time" value = endTime id="to-time" }}</span>
           </p>
         </div>
       </div>

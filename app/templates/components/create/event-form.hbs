@@ -1,0 +1,38 @@
+<form {{ action "createEvent" on = "submit" }}>
+  {{#let (component 'create/event-info') as |EventInfo|}}
+    <EventInfo
+        @name={{mut name}}
+        @guests={{mut guests}}
+        @description={{mut description}}
+    ></EventInfo>
+  {{/let}}
+
+  {{#let (component 'create/event-time') as |EventTime| }}
+    <EventTime
+      @startDate={{mut startDate}}
+      @endDate={{mut endDate}}
+      @startTime={{mut startTime}}
+      @endTime={{mut endTime}}
+    ></EventTime>
+  {{/let}}
+
+  {{#let (component 'create/event-location') as |EventLocation|}}
+    <EventLocation
+        @toggleCenterSelected={{ action "toggleCenterSelected" on = "click" }}
+        @toggleAddressSelected={{ action "toggleAddressSelected" }}
+        @centerSelected={{ centerSelected }}
+        @addressSelected={{ addressSelected }}
+        @addressLine1={{mut addressLine1}}
+        @addressLine2={{mut addressLine2}}
+        @city={{mut city}}
+        @state={{mut state}}
+        @country={{mut country}}
+    >
+    </EventLocation>
+  {{/let}}
+  <div class="field">
+    <p class="control">
+      <button class="button is-primary">Submit</button>
+    </p>
+  </div>
+</form>

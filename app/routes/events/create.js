@@ -6,23 +6,28 @@ export default Route.extend({
   },
 
   actions: {
-    createEvent() {
-      const name = this.controller.get('name');
-      const guests = this.controller.get('guests');
-      const description = this.controller.get('description');
-      const date = this.controller.get('date');
-      const startTime = this.controller.get('startTime');
-      const endTime = this.controller.get('endTime');
-      const bookings = []
-
+    createEvent(event, address) {
+      const { name, description, guests, startTime, endTime } = event;
+      const { addressLine1, addressLine2, city, state, country } = address;
+      console.log(event)
+      // console.log(record)
+      //
       let newRecord = this.store.createRecord('event', {
-        name, guests, description, date, startTime, endTime, bookings
+        name, description, guests,
+        start_time: startTime,
+        end_time: endTime,
+        address: this.store.createRecord('address', {
+          addressLine1, addressLine2, city, state, country
+        })
       });
-
-
+      //
+      console.log(newRecord)
+      //
+      //
       newRecord.save()
         .then(() => console.log("Yay! Works"))
         .catch(() => {
+          console.log(newRecord.get('errors'))
           this.currentModel.set('nameErrors', newRecord.get('errors.name'))
           this.currentModel.set('guestsErrors', newRecord.get('errors.guests'))
           this.currentModel.set('descriptionErrors', newRecord.get('errors.description'))

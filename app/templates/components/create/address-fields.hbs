@@ -1,0 +1,33 @@
+<div id="address-fields">
+  <div class="field">
+    <label for="addressLine1" class="label">Address (1st line)</label>
+    <div class="control">
+      {{ input type="text" value=(mut addressLine1) class = "input" }}
+    </div>
+  </div>
+  <div class="field">
+    <label for="addressLine2" class="label">Address (2nd line)</label>
+    <div class="control">
+      {{ input type="text" value=(mut addressLine2) class = "input" }}
+    </div>
+  </div>
+  <div class="field is-horizontal" id="geolocation">
+    <div class="field-body">
+      <div class="field">
+        <div class="control">
+          {{ input type="text" value=(mut city) class = "input" placeholder="City" }}
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          {{ input type="text" value=(mut state) class = "input" placeholder = "State" }}
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          {{ input type="text" value=(mut country) class = "input" placeholder = "Country" }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
