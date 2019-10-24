@@ -1,6 +1,9 @@
 <div class="container" id="events-form">
   {{#let (component 'create/event-form') as |EventForm|}}
-    <EventForm @submit={{"createEvent"}}></EventForm>
+    <EventForm
+      @submit={{"createEvent"}}
+      @centers={{this.centers}}>
+    </EventForm>
   {{/let}}
 </div>
 

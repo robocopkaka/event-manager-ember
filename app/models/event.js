@@ -8,5 +8,6 @@ export default DS.Model.extend({
   description: DS.attr(),
   bookings: DS.hasMany('booking', { async: false }),
   user: DS.belongsTo('user', { async: false }),
-  address: DS.belongsTo('address', { async: false })
+  address: DS.belongsTo('address', { async: false }),
+  center: DS.belongsTo('center', { async: true })
 });

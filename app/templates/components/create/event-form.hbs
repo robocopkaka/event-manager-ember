@@ -13,7 +13,7 @@
       @endDate={{mut endDate}}
       @startTime={{mut startTime}}
       @endTime={{mut endTime}}
-    ></EventTime>
+  ></EventTime>
   {{/let}}
 
   {{#let (component 'create/event-location') as |EventLocation|}}
@@ -27,6 +27,8 @@
         @city={{mut city}}
         @state={{mut state}}
         @country={{mut country}}
+        @centers={{centers}}
+        @selectCenter={{action "selectCenter"}}
     >
     </EventLocation>
   {{/let}}

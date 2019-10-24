@@ -18,8 +18,7 @@
         </label>
       </div>
     </div>
-    {{ log (concat addressSelected " address") }}
-    {{ log (concat centerSelected " center") }}
+
     {{#if addressSelected}}
        {{#let (component 'create/address-fields') as |AddressFields| }}
          <AddressFields
@@ -33,12 +32,13 @@
     {{/if}}
 
    {{#if centerSelected}}
-      <div class="field has-addons">
+     <div class="field has-addons">
         <div class="control is-expanded">
           <div class="select is-full-width">
-            <select name="center" id="">
-              <option value="Test center 1">Test center 3</option>
-              <option value="Test center 2">Test center 2</option>
+            <select name="center" id="center-dropdown" onchange={{action "selectCenter" value="target.value"}}>
+              {{#each centers key="@identity" as |center|}}
+                <option value={{center.id}}>{{center.name}}</option>
+              {{/each}}
             </select>
           </div>
         </div>
