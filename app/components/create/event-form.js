@@ -18,8 +18,10 @@ export default Component.extend({
       const name = this.get('name');
       const guests = this.get('guests');
       const description = this.get('description');
-      const startTime = this.createDateTime(this.get('startDate'), this.get('startTime'));
-      const endTime = this.createDateTime(this.get('endDate'), this.get('endTime'));
+      // const startTime = this.createDateTime(this.get('startDate'), this.get('startTime'));
+      const startTime = new Date();
+      // const endTime = this.createDateTime(this.get('endDate'), this.get('endTime'));
+      const endTime = new Date();
       const addressLine1 = this.get('addressLine1');
       const addressLine2 = this.get('addressLine2');
       const city = this.get('city');

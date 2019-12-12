@@ -1,4 +1,5 @@
 {{#each errors as |error| }}
+  {{log errors}}
   <div class="help is-danger">
     <ul>
       <li>{{capitalize-word error.attribute}} {{ error.message }}</li>

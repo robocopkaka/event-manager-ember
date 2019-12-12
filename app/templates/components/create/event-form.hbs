@@ -1,9 +1,12 @@
 <form {{ action "createEvent" on = "submit" }}>
   {{#let (component 'create/event-info') as |EventInfo|}}
+    {{ log centers }}
+    {{#if errors.nameErrors }} <p>Meeeeeeeeeeee</p> {{ log errors }} {{/if}}
     <EventInfo
         @name={{mut name}}
         @guests={{mut guests}}
         @description={{mut description}}
+        @errors={{errors}}
     ></EventInfo>
   {{/let}}
 
@@ -32,7 +35,7 @@
     >
     </EventLocation>
   {{/let}}
-  <div class="field">
+  <div class="field" id="submit-button">
     <p class="control">
       <button class="button is-primary">Submit</button>
     </p>
