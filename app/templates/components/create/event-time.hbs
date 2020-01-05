@@ -1,0 +1,39 @@
+<div id="event-time">
+  <div id="side-header">
+    Date & Time
+  </div>
+  <div id="time-fields">
+    <label class="label">From</label>
+    <div class="field is-horizontal">
+      <div class="field-body">
+        <div class="date-field">
+          <p class="control has-icons-left" id="date">
+            {{ pikaday-input value=date onSelection=(action (mut startDate)) placeholder="Start date" }}
+          </p>
+        </div>
+        <div class="">
+          <p class="control is-expanded has-icons-left">
+            <span>{{ input type="time" value = startTime id="from-time" }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    {{#if errors.startTimeErrors }}<ErrorMessages @errors={{errors.startTimeErrors}} />{{/if}}
+    <label for="" class="label">Time</label>
+    <div class="field is-horizontal">
+      <div class="field-body">
+        <div class="date-field">
+          <p class="control has-icons-left" id="date">
+            {{ pikaday-input value=date onSelection=(action (mut endDate)) placeholder="End date" }}
+          </p>
+        </div>
+        <div class="">
+          <p class="control is-expanded has-icons-left">
+            <span>{{ input type="time" value = endTime id="to-time" }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    {{#if errors.endTimeErrors }}<ErrorMessages @errors={{errors.endTimeErrors}} />{{/if}}
+  </div>
+</div>

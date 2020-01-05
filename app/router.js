@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('bookings');
   this.route('events', function() {
     this.route('show', { path: '/:id' });
+    this.route('create');
   });
   this.route('login');
 });

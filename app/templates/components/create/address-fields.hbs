@@ -1,0 +1,37 @@
+<div id="address-fields">
+  <div class="field">
+    <label for="addressLine1" class="label">Address (1st line)</label>
+    <div class="control">
+      {{ input type="text" value=(mut addressLine1) class=addressLine1Classes key-press=(action "clearErrors" errors.addressLine1Errors ) name="addressLine1" }}
+    </div>
+    {{#if errors.addressLine1Errors }}<ErrorMessages @errors={{errors.addressLine1Errors}} />{{/if}}
+  </div>
+  <div class="field">
+    <label for="addressLine2" class="label">Address (2nd line)</label>
+    <div class="control">
+      {{ input type="text" value=(mut addressLine2) class = "input" }}
+    </div>
+  </div>
+  <div class="field is-horizontal" id="geolocation">
+    <div class="field-body">
+      <div class="field">
+        <div class="control">
+          {{ input type="text" value=(mut city) class=cityClasses key-press=(action "clearErrors" errors.cityErrors ) placeholder="City" name="city" }}
+        </div>
+        {{#if errors.cityErrors }}<ErrorMessages @errors={{errors.cityErrors}} />{{/if}}
+      </div>
+      <div class="field">
+        <div class="control">
+          {{ input type="text" value=(mut state) class=stateClasses key-press=(action "clearErrors" errors.stateErrors ) placeholder = "State" name="state" }}
+        </div>
+        {{#if errors.stateErrors }}<ErrorMessages @errors={{errors.stateErrors}} />{{/if}}
+      </div>
+      <div class="field">
+        <div class="control">
+          {{ input type="text" value=(mut country) class=countryClasses key-press=(action "clearErrors" errors.countryErrors ) placeholder = "Country" name="country" }}
+        </div>
+        {{#if errors.countryErrors }}<ErrorMessages @errors={{errors.countryErrors}} />{{/if}}
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,5 +5,6 @@ export default DS.Model.extend({
   email: DS.attr('string'),
   password: DS.attr(),
   bookings: DS.hasMany('booking', { async: true }),
-  events: DS.hasMany('event', { async: false })
+  events: DS.hasMany('event', { async: false }),
+  // centers: DS.hasMany('center', { async: true }),
 });

@@ -1,0 +1,50 @@
+<div id="event-location">
+  <div id="side-header">Location</div>
+  <div id="location-fields">
+    <div class="toggle">
+      <h1>Have a location in mind?</h1>
+      <div class="control">
+        <label class="radio">
+          {{ input type="radio" name="answer" checked="true" }}
+          <div id="center" class="box" onclick={{ action toggleCenterSelected }}>
+            <span>A center</span>
+          </div>
+        </label>
+        <label class="radio">
+          {{ input type="radio" name="answer"}}
+          <div id="address" class="box" onclick={{ action toggleAddressSelected }}>
+            <span>An address</span>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    {{#if addressSelected}}
+       {{#let (component 'create/address-fields') as |AddressFields| }}
+         <AddressFields
+           @addressLine1={{mut addressLine1}}
+           @addressLine2={{mut addressLine2}}
+           @city={{mut city}}
+           @state={{mut state}}
+           @country={{mut country}}
+           @errors={{errors}}
+           @clearAddressErrors={{action "clearAddressErrors"}}
+         ></AddressFields>
+       {{/let}}
+    {{/if}}
+
+   {{#if centerSelected}}
+     <div class="field has-addons" id="center-fields">
+        <div class="control is-expanded">
+          <div class="select is-full-width">
+            <select name="center" id="center-dropdown" onchange={{action "selectCenter" value="target.value"}}>
+              {{#each centers key="@identity" as |center|}}
+                <option value={{center.id}}>{{center.name}}</option>
+              {{/each}}
+            </select>
+          </div>
+        </div>
+      </div>
+   {{/if}}
+  </div>
+</div>
