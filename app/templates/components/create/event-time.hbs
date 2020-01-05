@@ -18,6 +18,7 @@
         </div>
       </div>
     </div>
+    {{#if errors.startTimeErrors }}<ErrorMessages @errors={{errors.startTimeErrors}} />{{/if}}
     <label for="" class="label">Time</label>
     <div class="field is-horizontal">
       <div class="field-body">
@@ -32,8 +33,7 @@
           </p>
         </div>
       </div>
-      {{#if model.startTimeErrors }}<ErrorMessages @errors={{model.startTimeErrors}} />{{/if}}
-      {{#if model.endTimeErrors }}<ErrorMessages @errors={{model.endTimeErrors}} />{{/if}}
     </div>
+    {{#if errors.endTimeErrors }}<ErrorMessages @errors={{errors.endTimeErrors}} />{{/if}}
   </div>
 </div>

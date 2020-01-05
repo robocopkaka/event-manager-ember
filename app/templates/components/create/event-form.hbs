@@ -1,12 +1,11 @@
 <form {{ action "createEvent" on = "submit" }}>
   {{#let (component 'create/event-info') as |EventInfo|}}
-    {{ log centers }}
-    {{#if errors.nameErrors }} <p>Meeeeeeeeeeee</p> {{ log errors }} {{/if}}
     <EventInfo
         @name={{mut name}}
         @guests={{mut guests}}
         @description={{mut description}}
         @errors={{errors}}
+        @clearFieldErrors={{action "clearFieldErrors"}}
     ></EventInfo>
   {{/let}}
 
@@ -16,6 +15,7 @@
       @endDate={{mut endDate}}
       @startTime={{mut startTime}}
       @endTime={{mut endTime}}
+      @errors={{errors}}
   ></EventTime>
   {{/let}}
 
@@ -31,7 +31,9 @@
         @state={{mut state}}
         @country={{mut country}}
         @centers={{centers}}
+        @errors={{errors}}
         @selectCenter={{action "selectCenter"}}
+        @clearFieldErrors={{action "clearFieldErrors"}}
     >
     </EventLocation>
   {{/let}}

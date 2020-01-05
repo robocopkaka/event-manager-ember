@@ -6,24 +6,25 @@
     <div class="field">
       <label for="name" class="label">Name</label>
       <div class="control">
-        {{ input value=(mut name) placeholder = "Enter event name ..." class = "input"}}
+        {{ input value=(mut name) placeholder = "Enter event name ..." class=nameClasses key-press=(action "clearErrors" errors.nameErrors ) name="name" }}
       </div>
-      {{#if errors }} <p>Meeeeeeeeeeee</p> {{ log errors }} {{/if}}
-      {{#if this.nameErrors }}<ErrorMessages @errors={{this.nameErrors}} />{{/if}}
+      {{#if errors.nameErrors }}<ErrorMessages @errors={{errors.nameErrors}} />{{/if}}
     </div>
+
     <div class="field">
       <label for="guests" class="label">Guests</label>
       <div class="control">
-        {{ input value = guests placeholder = "Number of guests" class = "input" type = "number"}}
+        {{ input value = guests placeholder = "Number of guests" class=guestsClasses type = "number" key-press=(action "clearErrors" errors.guestsErrors ) name="guests" }}
       </div>
-      {{#if model.guestsErrors }}<ErrorMessages @errors={{model.guestsErrors}} />{{/if}}
+      {{#if errors.guestsErrors }}<ErrorMessages @errors={{errors.guestsErrors}} />{{/if}}
     </div>
+
     <div class="field">
       <label for="description" class="label">Description</label>
       <div class="control">
-        {{ textarea value=description class = "textarea" type = "textarea"}}
+        {{ textarea value=description class=descriptionClasses type = "textarea" key-press=(action "clearErrors" errors.descriptionErrors ) name="description" }}
       </div>
-      {{#if model.descriptionErrors }}<ErrorMessages @errors={{model.descriptionErrors}} />{{/if}}
+      {{#if errors.descriptionErrors }}<ErrorMessages @errors={{errors.descriptionErrors}} />{{/if}}
     </div>
   </div>
 </div>

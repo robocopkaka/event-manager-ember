@@ -1,8 +1,7 @@
 {{#each errors as |error| }}
-  {{log errors}}
-  <div class="help is-danger">
+  <div class="help is-danger" id="error-messages">
     <ul>
-      <li>{{capitalize-word error.attribute}} {{ error.message }}</li>
+      <li>{{ capitalize-word error.message }}</li>
     </ul>
   </div>
 {{/each}}

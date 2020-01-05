@@ -8,9 +8,6 @@ export default DS.RESTAdapter.extend(DataAdapterMixin, {
   session: service('session'),
   host: 'http://localhost:3001',
   namespace: 'api/v1',
-  // headers: computed('session.data.authenticated', function () {
-  //   console.log(this);
-  // }).volatile(),
 
   authorize(xhr) {
     let {token} = this.get('session.data.authenticated');
