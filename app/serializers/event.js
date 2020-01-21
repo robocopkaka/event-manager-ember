@@ -1,5 +1,4 @@
 import DS from 'ember-data';
-import { isNone } from '@ember/utils';
 import ApplicationSerializer from './application';
 
 const { EmbeddedRecordsMixin, errorsHashToArray } = DS;
@@ -13,10 +12,9 @@ export default ApplicationSerializer.extend(EmbeddedRecordsMixin, {
     center: { serialize: 'id' }
   },
   normalizeFindAllResponse(store, primaryModelClass, payload, id, requestType) {
-    delete payload.message;
-    payload.events = payload.data.events;
-    delete payload.data;
-
+    return this._super(...arguments);
+  },
+  normalizeQueryResponse(store, primaryModelClass, payload, id, requestType) {
     return this._super(...arguments);
   },
   normalizeFindRecordResponse(store, primaryModelClass, payload, id, requestType) {

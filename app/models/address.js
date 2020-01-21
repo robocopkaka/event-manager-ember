@@ -6,5 +6,6 @@ export default DS.Model.extend({
   city: DS.attr('string'),
   state: DS.attr('string'),
   country: DS.attr('string'),
-  event: DS.belongsTo('event', { async: false })
+  event: DS.belongsTo('event', { async: false }),
+  center: DS.belongsTo('center', { async: false })
 });

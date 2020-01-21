@@ -6,6 +6,7 @@ export default DS.Model.extend({
   startTime: DS.attr(),
   endTime: DS.attr(),
   description: DS.attr(),
+  meta: DS.attr(),
   bookings: DS.hasMany('booking', { async: false }),
   user: DS.belongsTo('user', { async: false }),
   address: DS.belongsTo('address', { async: false }),

@@ -1,0 +1,19 @@
+<h1>Stuff</h1>
+<div class="container">
+  <div class="columns is-multiline">
+    {{#each this.model as |event|}}
+      {{#let (component "events/event-item") as |EventItem| }}
+        <div class="column is-4-desktop is-12-mobile is-12-tablet">
+          <EventItem @event={{event}} />
+        </div>
+      {{/let}}
+    {{/each}}
+  </div>
+  <div>
+    {{#let (component "events/pagination") as |Pagination|}}
+      <Pagination></Pagination>
+    {{/let}}
+  </div>
+</div>
+
+{{outlet}}
