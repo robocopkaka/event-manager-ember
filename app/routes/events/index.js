@@ -1,12 +1,22 @@
 import Route from '@ember/routing/route';
-import { set, get } from '@ember/object';
+import { set } from '@ember/object';
 
 export default Route.extend({
-  model() {
-    return this.store.query('event', {include: 'address', page: 1});
+  page: 1,
+  meta: '',
+  queryParams: {
+    page: {
+      refreshModel: true
+    },
+    limit: {
+      refreshModel: true
+    }
   },
-  afterModel(events) {
-    set(this, 'meta', get(events, 'meta'))
-    console.log(this.meta)
+  model(params) {
+    set(this, 'page', params.page);
+    return this.store.query('event', {include: 'address',
+      page: params.page,
+      limit: params.limit,
+    });
   }
 });

@@ -25,7 +25,7 @@
           <a class="navbar-link">Events</a>
           <div class="navbar-dropdown">
             <a href="#" class="navbar-item">Add Event</a>
-            {{#link-to "events"}}<span class="navbar-item">View Events</span>{{/link-to}}
+            {{#link-to "events" (query-params page=1)}}<span class="navbar-item">View Events</span>{{/link-to}}
           </div>
         </div>
       </div>

@@ -1,5 +1,4 @@
-<h1>Stuff</h1>
-<div class="container">
+<div class="container" id="events-list">
   <div class="columns is-multiline">
     {{#each this.model as |event|}}
       {{#let (component "events/event-item") as |EventItem| }}
@@ -9,9 +8,9 @@
       {{/let}}
     {{/each}}
   </div>
-  <div>
+  <div id="pagination">
     {{#let (component "events/pagination") as |Pagination|}}
-      <Pagination></Pagination>
+      <Pagination @meta={{this.model.meta}} @page={{this.page}}></Pagination>
     {{/let}}
   </div>
 </div>

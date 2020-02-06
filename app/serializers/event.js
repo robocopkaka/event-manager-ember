@@ -15,6 +15,8 @@ export default ApplicationSerializer.extend(EmbeddedRecordsMixin, {
     return this._super(...arguments);
   },
   normalizeQueryResponse(store, primaryModelClass, payload, id, requestType) {
+    payload.meta.pagination.links = this.createPageMeta(payload.meta.pagination.links);
+
     return this._super(...arguments);
   },
   normalizeFindRecordResponse(store, primaryModelClass, payload, id, requestType) {
@@ -37,4 +39,31 @@ export default ApplicationSerializer.extend(EmbeddedRecordsMixin, {
 
     return this._super(...arguments)
   },
+  createPageMeta(data) {
+
+    let meta = {};
+
+    Object.keys(data).forEach(type => {
+      const link = data[type];
+      meta[type] = {};
+      let a = document.createElement('a');
+      a.href = link;
+
+      a.search.slice(1).split('&').forEach(pairs => {
+        const [param, value] = pairs.split('=');
+
+        if (param === 'page') {
+          meta[type].page = parseInt(value);
+        }
+        if (param === 'limit') {
+          meta[type].limit = parseInt(value);
+        }
+
+      });
+      a = null;
+    });
+
+    return meta;
+
+  }
 });
