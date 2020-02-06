@@ -1,8 +1,10 @@
 @import "bulma";
 @import "events/show.scss";
 @import "events/create.scss";
+@import "events/index.scss";
 @import "auth";
 @import "navbar";
+@import "functions/px_to_rem";
 
 html, body {
   background-color: #F6F7F8;

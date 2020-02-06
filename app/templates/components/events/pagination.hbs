@@ -1,0 +1,46 @@
+<nav class="pagination" role="navigation" aria-label="pagination">
+  <ul class="pagination-list">
+    <span {{action "pageClicked" (difference page 1)}}>
+      {{#if goBack}}
+        {{#link-to "events.index" (query-params page=(difference page 1)) class="pagination-link step" }}{{"<"}}{{/link-to}}
+      {{/if}}
+    </span>
+
+    {{#each initialPageNumbers as |number|}}
+      <li {{action "pageClicked" number}}>
+        {{#link-to "events.index" (query-params page=number) class=(set-class number this.page "pagination-link" "is-current") }}{{number}}{{/link-to}}
+      </li>
+    {{/each}}
+
+    {{#if showFirstEllipsis}}
+      <li><span class="pagination-ellipsis">&hellip;</span></li>
+    {{/if}}
+
+    {{log middlePageNumbers}}
+    {{#each middlePageNumbers as |number|}}
+      <li {{action "pageClicked" number}}>
+        {{#link-to "events.index" (query-params page=number) class=(set-class number this.page "pagination-link" "is-current") }}
+          {{number}}
+        {{/link-to}}
+      </li>
+    {{/each}}
+
+    {{#if showSecondEllipsis}}
+      <li><span class="pagination-ellipsis">&hellip;</span></li>
+    {{/if}}
+
+    {{#each lastPageNumbers as |number|}}
+      <li {{action "pageClicked" number}}>
+        {{#link-to "events.index" (query-params page=number) class=(set-class number this.page "pagination-link" "is-current") }}{{number}}{{/link-to}}
+      </li>
+    {{/each}}
+
+    {{#if goForward}}
+      <span {{action "pageClicked" (sum page 1)}}>
+        {{#link-to "events.index" (query-params page=(sum page 1)) class="pagination-link step" }}{{">"}}{{/link-to}}
+      </span>
+    {{/if}}
+
+  </ul>
+</nav>
+{{yield}}

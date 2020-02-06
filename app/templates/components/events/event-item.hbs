@@ -1,0 +1,32 @@
+{{#link-to "events.show" event}}
+  <div class="card">
+  <header class="card-header">
+    <span class="icon">{{fa-icon "calendar-o"}}</span>
+    <span id="date">{{moment-format event.startTime "dddd, MMM DD hh:mm A"}}</span>
+  </header>
+
+  <div class="card-content">
+    <div class="content">
+      <div id="event-name">{{event.name}}</div>
+      <div id="event-host">
+        <span id="header">Host</span>: <span id="name">{{event.user.name}}</span>
+      </div>
+      <div id="event-address">
+        <span class="icon">
+          {{fa-icon "map-marker"}}:
+        </span>
+        {{#if event.center}}
+          {{event.center.address.city}}
+        {{else}}
+          {{event.address.city}}
+        {{/if}}
+      </div>
+    </div>
+  </div>
+
+  <footer class="card-footer">
+    <div class="card-footer-item" id="attendees">{{event.bookings.length}} {{pluralize-word event.bookings.length}}</div>
+  </footer>
+</div>
+{{/link-to}}
+{{yield}}

@@ -1,5 +1,4 @@
 import DS from 'ember-data';
-import { isNone } from '@ember/utils';
 import ApplicationSerializer from './application';
 
 const { EmbeddedRecordsMixin, errorsHashToArray } = DS;
@@ -13,9 +12,10 @@ export default ApplicationSerializer.extend(EmbeddedRecordsMixin, {
     center: { serialize: 'id' }
   },
   normalizeFindAllResponse(store, primaryModelClass, payload, id, requestType) {
-    delete payload.message;
-    payload.events = payload.data.events;
-    delete payload.data;
+    return this._super(...arguments);
+  },
+  normalizeQueryResponse(store, primaryModelClass, payload, id, requestType) {
+    payload.meta.pagination.links = this.createPageMeta(payload.meta.pagination.links);
 
     return this._super(...arguments);
   },
@@ -39,4 +39,31 @@ export default ApplicationSerializer.extend(EmbeddedRecordsMixin, {
 
     return this._super(...arguments)
   },
+  createPageMeta(data) {
+
+    let meta = {};
+
+    Object.keys(data).forEach(type => {
+      const link = data[type];
+      meta[type] = {};
+      let a = document.createElement('a');
+      a.href = link;
+
+      a.search.slice(1).split('&').forEach(pairs => {
+        const [param, value] = pairs.split('=');
+
+        if (param === 'page') {
+          meta[type].page = parseInt(value);
+        }
+        if (param === 'limit') {
+          meta[type].limit = parseInt(value);
+        }
+
+      });
+      a = null;
+    });
+
+    return meta;
+
+  }
 });
