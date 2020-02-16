@@ -1,5 +1,7 @@
-<Header
-    @isAuthenticated={{ session.isAuthenticated }}
-    @invalidate ={{ action "invalidateSession" }}
-/>
-{{outlet}}
+<div class="ember-view">
+  <Header
+      @isAuthenticated={{ session.isAuthenticated }}
+      @invalidate ={{ action "invalidateSession" }}
+  />
+  {{outlet}}
+</div>
