@@ -1,26 +1,24 @@
-import Component from '@ember/component';
-import { computed, get, set } from '@ember/object';
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
-export default Component.extend({
-  meta: '',
-  firstEllipsis: false,
-  lastEllipsis: false,
-  numberOfPages: computed('page', function () {
-    return this.meta.pagination.total_pages
-  }),
+export default class PaginationComponent extends Component{
+  @tracked page = this.args.page;
+  meta = this.args.meta;
+  numberOfPages = parseInt(this.meta.pagination.total_pages, 10)
 
-  initialPageNumbers: computed('numberOfPages', function () {
-    let pageNumber = get(this, 'page');
+  get initialPageNumbers() {
+    let pageNumber = this.page;
     if (this.numberOfPages <= 5) {
-      return this.generatePages(1, get(this, 'numberOfPages'));
+      return this.generatePages(1, this.numberOfPages);
     } else if (this.numberOfPages > 5 && this.page === 1) {
       return this.generatePages(pageNumber, 3)
     } else {
       return [1]
     }
-  }),
+  }
 
-  middlePageNumbers: computed('page', function () {
+  get middlePageNumbers() {
     if (this.numberOfPages <= 5) {
       return [];
     }
@@ -30,10 +28,10 @@ export default Component.extend({
     } else if (this.numberOfPages - this.page > 2) {
       return this.generatePages(this.page, 3);
     }
-  }),
+  }
 
-  lastPageNumbers: computed('page', function () {
-    let pageNumber = get(this, 'numberOfPages');
+  get lastPageNumbers() {
+    let pageNumber = this.numberOfPages;
     const diff = this.numberOfPages - this.page;
 
     if (this.numberOfPages <= 5) {
@@ -44,36 +42,35 @@ export default Component.extend({
       return [this.numberOfPages]
     }
     return this.generatePages(pageNumber, 3, 'decrement').reverse();
-  }),
+  }
 
-  showFirstEllipsis: computed('numberOfPages', 'page', function () {
+  get showFirstEllipsis() {
     return this.numberOfPages > 5;
-  }),
+  }
 
-  showSecondEllipsis: computed('page', 'middlePageNumbers', function () {
+  get showSecondEllipsis() {
     return this.middlePageNumbers && this.middlePageNumbers.length >  0;
-  }),
+  }
 
-  goBack: computed('page', function () {
+  get goBack() {
     return this.page !== 1;
-  }),
+  }
 
-  goForward: computed('page', function () {
+  get goForward() {
     return this.page !== this.numberOfPages;
-  }),
+  }
 
-  generatePages: function (page, length, operator) {
+  generatePages(page, length, operator) {
     let pageNumbers = Array(length);
     for(let count = 0; count < length; count++) {
       pageNumbers[count] = page;
       operator !== 'decrement' ? page++ : page --;
     }
     return pageNumbers
-  },
-
-  actions: {
-    pageClicked(pageNumber) {
-      set(this, 'page', pageNumber)
-    }
   }
-});
+
+  @action
+  pageClicked(pageNumber) {
+    this.page = pageNumber;
+  }
+}
