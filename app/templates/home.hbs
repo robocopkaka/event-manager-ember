@@ -1,0 +1,55 @@
+<div id="home">
+  <div id="head-section">
+    <div id="headers">
+      <h1 id="site-header">
+        Kachi's Events Manager
+      </h1><br />
+      <h2 id="site-description">
+        Find or create your own unique events
+      </h2>
+    </div>
+
+    <div class="container">
+      <div class="button-set">
+        <button id="create">
+          <LinkTo @route="events.create">Create Event</LinkTo>
+        </button>
+        <button id="view">
+          <LinkTo @route="events.index">View all</LinkTo>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="sample-events">
+    <div class="container">
+      <div id="headers-section">
+        <h2 id="events-header">Upcoming events</h2>
+      </div>
+
+      <div id="event-cards">
+        <div class="columns is-multiline">
+          {{#each @model as |event| }}
+            <div class="column is-4-desktop is-12-mobile is-12-tablet">
+              <Events::EventItem @event={{event}} />
+            </div>
+          {{/each}}
+        </div>
+      </div>
+
+      <div id="view-all-events">
+        <button id="events-button">
+          <LinkTo @route="events.index" id="see-all">See all</LinkTo>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="event-categories">
+    <h2 id="categories-header">Categories</h2>
+    <div id="categories-list">
+      <CategoryItem></CategoryItem>
+    </div>
+  </div>
+</div>
+{{outlet}}

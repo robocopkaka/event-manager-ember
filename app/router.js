@@ -13,4 +13,5 @@ Router.map(function() {
     this.route('create');
   });
   this.route('login');
+  this.route('home', { path: '/' });
 });
