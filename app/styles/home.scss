@@ -66,6 +66,15 @@
       padding-top: px-to-rem(50px);
       width: 40%;
       margin: auto;
+      a {
+        color: #FFFFFF;
+        &:hover, &:visited {
+          color: #FFFFFF;
+        }
+        &:active {
+          border-color: #FFFFFF;
+        }
+      }
       #create {
         @include home-buttons;
         margin-right: px-to-rem(20px);
@@ -95,8 +104,7 @@
         //margin: auto;
       }
       @include bp(bp-tablet-big) {
-        width: 30%;
-        font-size: 100px;
+        width: 50%;
         margin: auto;
       }
     }

@@ -3,13 +3,16 @@
   $bp-phones-small: "(min-width: 200px) and (max-width: 320px)";
   $bp-tablet: "(min-width: 768px) and (max-width: 835px)";
   $bp-tablet-big: "(min-width: 1024px) and (max-width: 1112px)";
-  $bp-desktop: "(min-width: 1300px)";
+  $bp-desktop: "(min-width: 1337px)";
 
   @if $point == bp-phones {
     @media #{$bp-phones} { @content; }
   }
   @else if $point == bp-tablet {
     @media #{$bp-tablet} { @content; }
+  }
+  @else if $point == bp-tablet-big {
+    @media #{$bp-tablet-big} { @content; }
   }
   @else if $point == bp-desktop {
     @media #{$bp-desktop} { @content; }

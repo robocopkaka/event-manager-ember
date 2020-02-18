@@ -11,8 +11,12 @@
 
     <div class="container">
       <div class="button-set">
-        <button id="create">Create Event</button>
-        <button id="view">View all</button>
+        <button id="create">
+          <LinkTo @route="events.create">Create Event</LinkTo>
+        </button>
+        <button id="view">
+          <LinkTo @route="events.index">View all</LinkTo>
+        </button>
       </div>
     </div>
   </div>
