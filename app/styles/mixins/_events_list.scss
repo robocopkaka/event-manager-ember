@@ -1,0 +1,65 @@
+@import "./media_query_mixins";
+
+@mixin events-list {
+  .card {
+    width: auto;
+    height: px-to-rem(250px);
+    max-height: px-to-rem(250px);
+    border-radius: 10px;
+
+    .card-header {
+      padding: px-to-rem(10px) px-to-rem(25px);
+      font-size: px-to-rem(12px);
+      color: #4A2545;
+      #date {
+        padding-top: px-to-rem(4px);
+      }
+    }
+
+    .card-content {
+      max-height: px-to-rem(160px);
+      height: px-to-rem(160px);
+
+      .content {
+        margin-top: px-to-rem(-20px);
+        #event-name {
+          font-weight: 600;
+          font-size: px-to-rem(25px);
+          @include bp(bp-phones-small) {
+            font-size: px-to-rem(20px);
+            font-weight: bolder;
+          }
+        }
+
+        #event-host {
+          padding-top: px-to-rem(5px);
+          #header {
+            font-weight: 700;
+            font-size: px-to-rem(14px);
+          }
+        }
+        #event-address {
+          margin-left: px-to-rem(-5px);
+          padding-top: px-to-rem(5px);
+        }
+      }
+    }
+
+    .card-footer {
+      display: flex;
+      flex-direction: row;
+      a {
+        color: black;
+        font-weight: 500;
+        &:hover {
+          color: #4A2545;
+        }
+      }
+      #attendees {
+        color: #4A2545;
+        justify-content: start;
+        padding: px-to-rem(10px) px-to-rem(20px);
+      }
+    }
+  }
+}

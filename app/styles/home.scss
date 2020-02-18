@@ -1,0 +1,178 @@
+@import "mixins/media_query_mixins";
+@import "mixins/events_list";
+// use bp mixin from imported file to specify breakpoints
+//$bp-phones: "(min-width: 320px) and (max-width: 767px)";
+//$bp-tablet: "(min-width: 768px)";
+//$bp-desktop: "(min-width: 1024px)";
+
+@mixin home-buttons {
+  font-size: px-to-rem(18px);
+  padding: px-to-rem(10px) px-to-rem(15px);
+  width: px-to-rem(200px);
+  background: #5C415D;
+  color: #FFFFFF;
+  border-radius: px-to-rem(8px);
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+@mixin justify-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#home {
+  #head-section {
+    background-color: #FFFFFF;
+    height: px-to-rem(300px);
+    #headers {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: px-to-rem(150px);
+      #site-header {
+        padding-top: px-to-rem(20px);
+        font-size: px-to-rem(50px);
+        font-weight: bold;
+        color: #5C415D;
+
+        @include bp(bp-phones){
+          font-size: px-to-rem(30px);
+          padding-top: 0;
+        }
+        @include bp(bp-phones-small){
+          padding-top: 0;
+          font-size: px-to-rem(20px);
+        }
+      }
+
+      #site-description {
+        font-weight: 300;
+        font-size: px-to-rem(25px);
+
+        @include bp(bp-phones) {
+          font-size: px-to-rem(18px);
+        }
+
+        @include bp(bp-phones-small) {
+          font-size: px-to-rem(18px);
+        }
+      }
+    }
+    .button-set {
+      padding-top: px-to-rem(50px);
+      width: 40%;
+      margin: auto;
+      #create {
+        @include home-buttons;
+        margin-right: px-to-rem(20px);
+        @include bp(bp-phones) {
+          margin-bottom: px-to-rem(10px);
+        }
+        @include bp(bp-phones-small) {
+          margin-bottom: px-to-rem(10px);
+        }
+      }
+      #view {
+        @include home-buttons;
+      }
+
+      @include bp(bp-phones) {
+        width: 50%;
+        margin: auto;
+        padding-top: px-to-rem(20px);
+      }
+      @include bp(bp-phones-small) {
+        width: 60%;
+        margin: auto;
+        padding-top: px-to-rem(5px);
+      }
+      @include bp(bp-tablet) {
+        width: 70%;
+        //margin: auto;
+      }
+      @include bp(bp-tablet-big) {
+        width: 30%;
+        font-size: 100px;
+        margin: auto;
+      }
+    }
+  }
+
+  #sample-events {
+    padding-top: px-to-rem(30px);
+    #headers-section {
+      @include justify-center;
+      #events-header {
+        font-size: px-to-rem(25px);
+        font-weight: bolder;
+      }
+    }
+
+    #event-cards {
+      @include events-list;
+      padding-top: px-to-rem(20px);
+
+      @include bp(bp-phones-small) {
+        padding: px-to-rem(20px) px-to-rem(20px);
+      }
+      @include bp(bp-phones) {
+        padding: px-to-rem(20px) px-to-rem(20px);
+      }
+    }
+
+    #view-all-events {
+      @include justify-center;
+      padding: px-to-rem(30px) 0;
+
+      #events-button {
+        @include home-buttons;
+        background: #FFFFFF;
+        border-color: #5C415D;
+        a {
+          color: #5C415D;
+          &:hover, &:visited {
+            color: #5C415D;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  #event-categories {
+    padding-bottom: px-to-rem(20px);
+    #categories-header {
+      @include justify-center;
+      font-size: px-to-rem(25px);
+      font-weight: bolder;
+    }
+
+    #categories-list {
+      .category-name {
+        padding-top: px-to-rem(10px);
+        font-weight: bolder;
+        font-size: px-to-rem(20px);
+
+        @include bp(bp-phones) {
+          font-size: px-to-rem(20px);
+        }
+        @include bp(bp-phones-small) {
+          font-size: px-to-rem(20px);
+        }
+        @include bp(bp-tablet) {
+          font-size: px-to-rem(30px);
+        }
+      }
+      @include bp(bp-phones-small) {
+        padding: px-to-rem(20px) px-to-rem(20px);
+      }
+      @include bp(bp-phones) {
+        padding: px-to-rem(20px) px-to-rem(20px);
+      }
+    }
+  }
+}
