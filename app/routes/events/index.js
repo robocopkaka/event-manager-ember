@@ -1,22 +1,24 @@
 import Route from '@ember/routing/route';
-import { set } from '@ember/object';
+import { tracked } from "@glimmer/tracking";
 
-export default Route.extend({
-  page: 1,
-  meta: '',
-  queryParams: {
+export default class IndexRoute extends Route {
+  @tracked page = 1;
+  meta = '';
+  queryParams = {
     page: {
-      refreshModel: true
+      refreshModel: true,
+      replace: true
     },
     limit: {
       refreshModel: true
     }
-  },
+  };
+
   model(params) {
-    set(this, 'page', params.page);
+    this.page = params.page;
     return this.store.query('event', {include: 'address',
-      page: params.page,
+      page: this.page,
       limit: params.limit,
     });
   }
-});
+}

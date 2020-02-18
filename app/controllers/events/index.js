@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
 
-export default Controller.extend({
-  queryParams: ['page', 'limit'],
-  page: 1,
-  limit: 6
-});
+export default class IndexController extends Controller {
+  queryParams = ['page', 'limit'];
+  page = 1;
+  limit = 5
+}

@@ -2,7 +2,7 @@
   <ul class="pagination-list">
     <span {{action "pageClicked" (difference page 1)}}>
       {{#if goBack}}
-        {{#link-to "events.index" (query-params page=(difference page 1)) class="pagination-link step" }}{{"<"}}{{/link-to}}
+        <LinkTo @route="events.index" @query={{hash page=(difference page 1)}} class="pagination-link step">{{"<"}}</LinkTo>
       {{/if}}
     </span>
 
@@ -16,7 +16,6 @@
       <li><span class="pagination-ellipsis">&hellip;</span></li>
     {{/if}}
 
-    {{log middlePageNumbers}}
     {{#each middlePageNumbers as |number|}}
       <li {{action "pageClicked" number}}>
         {{#link-to "events.index" (query-params page=number) class=(set-class number this.page "pagination-link" "is-current") }}
