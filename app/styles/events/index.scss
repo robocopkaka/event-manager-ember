@@ -12,6 +12,7 @@ $breakpoint-desktop: 1023px;
   @include events-list;
 
   #pagination {
+    padding-bottom: px-to-rem(30px);
     display: flex;
     flex-direction: row;
     justify-content: center;
