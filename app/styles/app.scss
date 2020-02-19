@@ -4,11 +4,31 @@
 @import "events/index.scss";
 @import "auth";
 @import "navbar";
-@import "footer";
 @import "home";
 @import "functions/px_to_rem";
 
 html, body {
   background-color: #F6F7F8;
   height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.site-container {
+  min-height: 100%;
+  position: relative;
+  #site-footer {
+    background: #4A2545;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: px-to-rem(70px);
+  }
+  #site-body {
+    padding-bottom: px-to-rem(200px);
+  }
 }

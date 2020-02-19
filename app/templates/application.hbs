@@ -1,8 +1,12 @@
 <div class="ember-view">
-  <Header
-      @isAuthenticated={{ session.isAuthenticated }}
-      @invalidate ={{ action "invalidateSession" }}
-  />
-  {{outlet}}
-  <Footer></Footer>
+  <div class="site-container">
+    <Header
+        @isAuthenticated={{ session.isAuthenticated }}
+        @invalidate ={{ action "invalidateSession" }}
+    />
+    <div id="site-body">
+      {{outlet}}
+    </div>
+    <Footer></Footer>
+  </div>
 </div>
