@@ -1,58 +1,68 @@
-import Component from '@ember/component';
-import { set } from '@ember/object';
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 import moment from "moment";
 
-export default Component.extend({
-  addressSelected: false,
-  centerSelected: false,
-  centerId: null,
-  actions: {
-    toggleAddressSelected() {
-      this.set('addressSelected', true);
-      this.set('centerSelected', false);
-    },
-    toggleCenterSelected() {
-      this.set('centerSelected', true);
-      this.set('addressSelected', false);
-    },
-    createEvent() {
-      const name = this.get('name');
-      const guests = this.get('guests');
-      const description = this.get('description');
-      const startTime = this.createDateTime(this.get('startDate'), this.get('startTime'));
-      const endTime = this.createDateTime(this.get('endDate'), this.get('endTime'));
-      const addressLine1 = this.get('addressLine1');
-      const addressLine2 = this.get('addressLine2');
-      const city = this.get('city');
-      const state = this.get('state');
-      const country = this.get('country');
-      const centerId = this.get('centerId');
-      const bookings = [];
+export default class EventFormComponent extends Component {
+  @tracked addressSelected = false;
+  @tracked centerSelected = false;
+  centerId = null;
 
-      let event = {
-        name, guests, description, bookings, centerId, startTime, endTime
-      };
-      const address = {
-        addressLine1, addressLine2, city, state, country,
-      };
+  @action
+  toggleAddressSelected() {
+    this.addressSelected = true;
+    this.centerSelected = false;
+  }
 
-      this.sendAction("submit", event, address)
-    },
+  @action
+  toggleCenterSelected() {
+    this.centerSelected = true;
+    this.addressSelected = false;
+  }
 
-    selectCenter(val) {
-      this.set('centerId', val);
-    },
+  @action
+  createEvent() {
+    const {
+      name, guests, description, addressLine1, addressLine2, city,
+      state, country, centerId
+    } = this;
+    const startTime = this.createDateTime(this.startDate, this.startTime);
+    const endTime = this.createDateTime(this.endDate, this.endTime);
+    const bookings = [];
+    console.log(startTime, endTime)
 
-    clearFieldErrors(errors, val, name) {
-      if (errors && errors.length > 0) {
-        set(this.errors, `${name}Errors`, undefined)
-      }
-    },
-  },
+    let event = {
+      name, guests, description, bookings, centerId, startTime, endTime
+    };
+    const address = {
+      addressLine1, addressLine2, city, state, country,
+    };
+
+    this.sendAction("submit", event, address)
+  }
+
+  @action
+  selectCenter(val) {
+    this.set('centerId', val);
+  }
+
+  @action
+  clearFieldErrors(errors, event) {
+    if (errors && errors.length > 0) {
+      this.errors[`${event.target.name}Errors`] = undefined;
+    }
+  }
+
+  @action
+  updateDate(value, name) {
+    this[`${name}`] = value
+    // console.log(this.startTime)
+  }
+
   createDateTime(date, time) {
     const setDate = moment(date).format('YYYY-MM-DD');
     return  moment(
       `${setDate.toString()} ${time.toString()}`, 'YYYY-MM-DDLT'
     ).format('YYYY-MM-DD HH:mm:ss')
   }
-});
+}

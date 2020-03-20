@@ -8,12 +8,17 @@
       <div class="field-body">
         <div class="date-field">
           <p class="control has-icons-left" id="date">
-            {{ pikaday-input value=date onSelection=(action (mut startDate)) placeholder="Start date" }}
+            <PikadayInput
+                @value=startDate
+                @placeholder="Start date"
+                @onSelection={{fn this.updateEventDate startDate "startDate"}}
+            >
+            </PikadayInput>
           </p>
         </div>
         <div class="">
           <p class="control is-expanded has-icons-left">
-            <span>{{ input type="time" value = startTime id="from-time" }}</span>
+            <span>{{ input type="time" value=@startTime id="from-time" name="startTime" }}</span>
           </p>
         </div>
       </div>
@@ -24,12 +29,17 @@
       <div class="field-body">
         <div class="date-field">
           <p class="control has-icons-left" id="date">
-            {{ pikaday-input value=date onSelection=(action (mut endDate)) placeholder="End date" }}
+            <PikadayInput
+                @value=startDate
+                @placeholder="Start date"
+                @onSelection={{fn this.updateEventDate endDate "endDate"}}
+            >
+            </PikadayInput>
           </p>
         </div>
         <div class="">
           <p class="control is-expanded has-icons-left">
-            <span>{{ input type="time" value = endTime id="to-time" }}</span>
+            <span>{{ input type="time" value=@endTime id="to-time" name="endTime" }}</span>
           </p>
         </div>
       </div>

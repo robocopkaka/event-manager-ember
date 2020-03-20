@@ -1,9 +1,9 @@
 <form {{ action "createEvent" on = "submit" }}>
   {{#let (component 'create/event-info') as |EventInfo|}}
     <EventInfo
-        @name={{mut name}}
-        @guests={{mut guests}}
-        @description={{mut description}}
+        @name={{this.name}}
+        @guests={{this.guests}}
+        @description={{this.description}}
         @errors={{errors}}
         @clearFieldErrors={{action "clearFieldErrors"}}
     ></EventInfo>
@@ -11,11 +11,12 @@
 
   {{#let (component 'create/event-time') as |EventTime| }}
     <EventTime
-      @startDate={{mut startDate}}
-      @endDate={{mut endDate}}
-      @startTime={{mut startTime}}
-      @endTime={{mut endTime}}
+      @startDate={{this.startDate}}
+      @endDate={{this.endDate}}
+      @startTime={{this.startTime}}
+      @endTime={{this.endTime}}
       @errors={{errors}}
+      @updateDate={{action "updateDate"}}
   ></EventTime>
   {{/let}}
 
@@ -25,11 +26,11 @@
         @toggleAddressSelected={{ action "toggleAddressSelected" }}
         @centerSelected={{ centerSelected }}
         @addressSelected={{ addressSelected }}
-        @addressLine1={{mut addressLine1}}
-        @addressLine2={{mut addressLine2}}
-        @city={{mut city}}
-        @state={{mut state}}
-        @country={{mut country}}
+        @addressLine1={{this.addressLine1}}
+        @addressLine2={{this.addressLine2}}
+        @city={{this.city}}
+        @state={{this.state}}
+        @country={{this.country}}
         @centers={{centers}}
         @errors={{errors}}
         @selectCenter={{action "selectCenter"}}
